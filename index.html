@@ -8,6 +8,7 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   min-height:100vh;
@@ -16,6 +17,7 @@ body{
   color:#57384e;
   text-align:center;
 }
+
 .page{
   display:none;
   min-height:100vh;
@@ -25,11 +27,14 @@ body{
   flex-direction:column;
   animation:fade .5s ease;
 }
+
 .page.active{display:flex}
+
 @keyframes fade{
   from{opacity:0;transform:translateY(8px)}
   to{opacity:1;transform:translateY(0)}
 }
+
 .card{
   width:100%;
   max-width:650px;
@@ -39,23 +44,28 @@ body{
   background:#fffafce8;
   box-shadow:0 12px 35px #78416420;
 }
+
 h1,h2{color:#b34d7a}
 h1{font-size:clamp(30px,7vw,45px)}
 h2{font-size:clamp(25px,6vw,35px)}
 p{font-size:17px;line-height:1.8}
+
 .arabic{
   direction:rtl;
   font-family:Arial,sans-serif;
   line-height:2;
 }
+
 .envelope{
   font-size:75px;
   animation:beat 1.5s infinite;
 }
+
 @keyframes beat{
   0%,100%{transform:scale(1)}
   50%{transform:scale(1.08)}
 }
+
 button{
   border:0;
   border-radius:30px;
@@ -67,6 +77,7 @@ button{
   font-weight:bold;
   cursor:pointer;
 }
+
 .gallery{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -74,6 +85,7 @@ button{
   width:100%;
   max-width:650px;
 }
+
 .gallery img{
   display:block;
   width:100%;
@@ -82,6 +94,7 @@ button{
   border-radius:15px;
   background:#f1dce8;
 }
+
 .message,.letter{
   width:100%;
   max-width:650px;
@@ -91,9 +104,15 @@ button{
   background:#ffffffa8;
   line-height:1.9;
 }
+
 .letter{text-align:left}
 .letter .arabic{text-align:right}
-.video-container{width:100%;max-width:700px}
+
+.video-container{
+  width:100%;
+  max-width:700px;
+}
+
 video{
   display:block;
   width:100%;
@@ -102,18 +121,20 @@ video{
   background:#000;
   border-radius:16px;
 }
+
 .heart{
   font-size:45px;
   color:#cf5589;
   animation:beat 1.4s infinite;
 }
+
 .small{font-size:13px;opacity:.75}
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
+<!-- BACKGROUND MUSIC -->
 <audio id="audio" autoplay loop preload="auto">
   <source src="./Justin%20Bieber%20-%20Baby.mp3" type="audio/mpeg">
 </audio>
@@ -124,53 +145,71 @@ video{
     <div class="envelope">💌</div>
     <p class="small">A LITTLE MESSAGE FROM MY HEART</p>
     <h1>A Message<br>From My Heart</h1>
+
     <p class="arabic">
       دعنا ننسى ما مضى ونبدأ من جديد...<br>
       فبعض الأشخاص يستحقون فرصة أخرى.
     </p>
+
     <p>There are things I want you to know.</p>
     <button onclick="go(1)">OPEN MY HEART ♡</button>
   </div>
 </section>
 
-<!-- PAGE 2: PHOTOS 1 AND 2 -->
+<!-- PAGE 2: FIRST TWO PHOTOS -->
 <section class="page" id="s1">
   <div class="card">
     <h2>Memories of Us ♡</h2>
+
     <div class="gallery">
       <img src="./photo1.jpg" alt="Our memory 1">
       <img src="./photo2.jpg" alt="Our memory 2">
     </div>
+
     <div class="message">
       <p>
         I know things haven't always been perfect.
         But the memories we share still mean so much to me.
         I'm sorry for the moments when I hurt you.
       </p>
+
       <p class="arabic">
         سامحني على كل لحظة حزينة تسببت فيها لك.
         لم تكن نيتي أن أجرحك، وأتمنى أن نمنح أنفسنا فرصة جديدة.
       </p>
     </div>
+
     <button onclick="go(2)">WATCH OUR VIDEO ♡</button>
   </div>
 </section>
 
-<!-- PAGE 3: VIDEO -->
+<!-- PAGE 3: AUTOPLAY MUTED VIDEO -->
 <section class="page" id="s2">
   <div class="card">
     <h2>A Memory Just for Us 🎬</h2>
+
     <div class="video-container">
-      <video id="video" controls playsinline preload="metadata">
+      <video
+        id="video"
+        muted
+        playsinline
+        webkit-playsinline
+        autoplay
+        preload="auto"
+        controls
+      >
         <source src="./VID_20261003_113548_805.mp4" type="video/mp4">
         Your browser does not support this video.
       </video>
     </div>
+
     <p id="videoError" class="arabic"
        style="display:none;color:#b00040">
       تعذّر تحميل الفيديو. تحقق من الملف وحاول مرة أخرى.
     </p>
+
     <p>Some memories deserve to be kept close to our hearts. ♡</p>
+
     <button onclick="go(3)">CONTINUE ♡</button>
   </div>
 </section>
@@ -179,52 +218,66 @@ video{
 <section class="page" id="s3">
   <div class="card">
     <h2>From My Heart 💗</h2>
+
     <div class="letter">
       <p>My dear,</p>
+
       <p>
         I'm truly sorry for the things that hurt you.
         I know that saying sorry cannot erase everything,
         but I want you to know that you matter to me.
       </p>
+
       <p>
         I don't expect everything to become perfect overnight.
         I only hope we can listen to each other, understand each
         other better, and rebuild the beautiful things between us
         one step at a time.
       </p>
+
       <p class="arabic">
         نعرف اللي الكلام وحده ما يكفيش، أما نحبك تعرف
         اللي مكانتك عندي كبيرة، ونحب نصلحوا اللي صار بيناتنا.
         نحب نسمعك ونفهمك أكثر، ونكون خير من قبل.
       </p>
+
       <p>
         5alina dima mkabchin fi b3athna w in7ibo b3athna
         il2a5er nhar fi 7yatna.
       </p>
+
       <p><strong>Is that a promise? ♡</strong></p>
+
       <p class="arabic">سامحني، وإن شاء الله تكون بداية جديدة لينا.</p>
+
       <p>With all my heart, ♡</p>
     </div>
+
     <button onclick="go(4)">ONE MORE THING ♡</button>
   </div>
 </section>
 
-<!-- PAGE 5: PHOTOS 3 TO 6 -->
+<!-- PAGE 5: LAST FOUR PHOTOS -->
 <section class="page" id="s4">
   <div class="card">
     <h2>Our Story Isn't Over ♡</h2>
+
     <div class="gallery">
       <img src="./photo3.jpg" alt="Our memory 3">
       <img src="./photo4.jpg" alt="Our memory 4">
       <img src="./photo5.jpg" alt="Our memory 5">
       <img src="./photo6.jpg" alt="Our memory 6">
     </div>
+
     <div class="heart">♡</div>
+
     <p>One step at a time, one day at a time.</p>
+
     <p class="arabic">
       كل شيء جميل يستحق الصبر والمحاولة.
       نتمنى نبدأوا صفحة جديدة مع بعضنا.
     </p>
+
     <button onclick="go(0)">READ AGAIN ♡</button>
   </div>
 </section>
@@ -236,40 +289,76 @@ const audio = document.getElementById('audio');
 const video = document.getElementById('video');
 const videoError = document.getElementById('videoError');
 
+/* Attempt to start background music */
 function startMusic(){
   audio.play().catch(function(){
-    // The browser may require a user interaction for audible autoplay.
+    // Some mobile browsers require user interaction.
   });
 }
 
 startMusic();
-window.addEventListener('load',startMusic);
 
-document.addEventListener('pointerdown',function(){
-  if(audio.paused) startMusic();
-},{once:true,passive:true});
+window.addEventListener('load', startMusic);
 
+/* Retry music after the first touch */
+document.addEventListener('pointerdown', function(){
+  if(audio.paused){
+    startMusic();
+  }
+}, {once:true, passive:true});
+
+/* Navigation between pages */
 function go(n){
-  document.getElementById('s'+current).classList.remove('active');
-  current = n;
-  document.getElementById('s'+current).classList.add('active');
+  document.getElementById('s' + current).classList.remove('active');
 
-  window.scrollTo({top:0,behavior:'smooth'});
-
-  if(n === 2){
-    videoError.style.display = 'none';
-    video.load();
+  /* Stop the video when leaving its page */
+  if(current === 2){
+    video.pause();
   }
 
-  if(audio.paused) startMusic();
+  current = n;
+  document.getElementById('s' + current).classList.add('active');
+
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  /* Automatically play the video silently */
+  if(n === 2){
+    videoError.style.display = 'none';
+
+    video.muted = true;
+    video.currentTime = 0;
+    video.load();
+
+    const playPromise = video.play();
+
+    if(playPromise !== undefined){
+      playPromise.catch(function(){
+        videoError.style.display = 'block';
+      });
+    }
+  }
+
+  /* Keep the song playing */
+  if(audio.paused){
+    startMusic();
+  }
 }
 
-video.addEventListener('error',function(){
+/* Video loading error */
+video.addEventListener('error', function(){
   videoError.style.display = 'block';
 });
 
-video.addEventListener('loadeddata',function(){
+/* Hide error once video is ready */
+video.addEventListener('loadeddata', function(){
   videoError.style.display = 'none';
+});
+
+/* Enforce muted video even if the player is interacted with */
+video.addEventListener('volumechange', function(){
+  if(!video.muted){
+    video.muted = true;
+  }
 });
 </script>
 
