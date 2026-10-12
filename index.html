@@ -1,4 +1,4 @@
-
+  
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -123,8 +123,7 @@ button:hover{
 
 .photo{
   background:#fff8ef;
-  color:#8d607a;
-  padding:8px 8px 15px;
+  padding:8px;
   box-shadow:0 4px 12px #39203130;
   transform:rotate(-3deg);
   transition:transform .25s;
@@ -139,15 +138,9 @@ button:hover{
 .photo img{
   display:block;
   width:100%;
-  height:125px;
+  height:145px;
   object-fit:cover;
   background:#e6cbd9;
-}
-
-.caption{
-  display:block;
-  padding-top:10px;
-  font-size:12px;
 }
 
 .letter{
@@ -169,7 +162,7 @@ button:hover{
 
 video{
   width:100%;
-  max-height:220px;
+  max-height:300px;
   background:#241821;
   border-radius:10px;
 }
@@ -188,7 +181,7 @@ video{
 @media(max-width:380px){
   .book{padding-left:17px;padding-right:17px}
   .letter{padding:15px 12px;font-size:13px}
-  .photo img{height:105px}
+  .photo img{height:120px}
 }
 </style>
 </head>
@@ -225,7 +218,7 @@ video{
   <button onclick="go(1)">OPEN MY HEART ♡</button>
 </section>
 
-<!-- PAGE 2: FIRST TWO PHOTOS -->
+<!-- PAGE 2: TWO PHOTOS -->
 <section id="s1">
   <div class="small">TO SOMEONE VERY SPECIAL</div>
 
@@ -236,12 +229,10 @@ video{
   <div class="gallery">
     <div class="photo">
       <img src="photo1.jpg" alt="Our first memory">
-      <span class="caption">Our special moment ♡</span>
     </div>
 
     <div class="photo">
       <img src="photo2.jpg" alt="A beautiful memory">
-      <span class="caption">You and me ♡</span>
     </div>
   </div>
 
@@ -250,21 +241,19 @@ video{
     forgiving, and trying again for.
   </p>
 
-  <button onclick="go(2)">A MEMORY TO KEEP ♡</button>
+  <button onclick="go(2)">WATCH OUR VIDEO ♡</button>
 </section>
 
 <!-- PAGE 3: VIDEO -->
 <section id="s2">
   <div class="small">A MEMORY TO KEEP</div>
 
-  <h2>OUR LITTLE VIDEO</h2>
+  <h2>OUR LITTLE VIDEO ♡</h2>
 
-  <video controls id="video" playsinline></video>
-
-  <label class="small">
-    Choose a video from your device
-    <input type="file" accept="video/*" onchange="pickVideo(this)">
-  </label>
+  <video controls playsinline preload="metadata">
+    <source src="video.mp4" type="video/mp4">
+    متصفحك لا يدعم تشغيل الفيديو.
+  </video>
 
   <p>Every moment we shared means something to me. ♡</p>
 
@@ -331,7 +320,7 @@ video{
   <button onclick="go(4)">OUR MEMORIES ♡</button>
 </section>
 
-<!-- PAGE 5: SIX MORE PHOTOS -->
+<!-- PAGE 5: FOUR PHOTOS -->
 <section id="s4">
   <div class="small">LITTLE MOMENTS, BIG FEELINGS</div>
 
@@ -340,32 +329,18 @@ video{
   <div class="gallery">
     <div class="photo">
       <img src="photo3.jpg" alt="Memory three">
-      <span class="caption">A moment to remember ♡</span>
     </div>
 
     <div class="photo">
       <img src="photo4.jpg" alt="Memory four">
-      <span class="caption">My favorite person ♡</span>
     </div>
 
     <div class="photo">
       <img src="photo5.jpg" alt="Memory five">
-      <span class="caption">Together ♡</span>
     </div>
 
     <div class="photo">
       <img src="photo6.jpg" alt="Memory six">
-      <span class="caption">Beautiful memories ♡</span>
-    </div>
-
-    <div class="photo">
-      <img src="photo7.jpg" alt="Memory seven">
-      <span class="caption">You make me smile ♡</span>
-    </div>
-
-    <div class="photo">
-      <img src="photo8.jpg" alt="Memory eight">
-      <span class="caption">Always in my heart ♡</span>
     </div>
   </div>
 
@@ -418,22 +393,6 @@ audio.addEventListener('error',()=>{
   musicStatus.textContent =
     'Song unavailable. Upload baby.mp3 to GitHub.';
 });
-
-function pickVideo(input){
-  const file = input.files && input.files[0];
-  if(!file) return;
-
-  const video = document.getElementById('video');
-
-  if(video.dataset.objectUrl){
-    URL.revokeObjectURL(video.dataset.objectUrl);
-  }
-
-  const url = URL.createObjectURL(file);
-  video.dataset.objectUrl = url;
-  video.src = url;
-  video.load();
-}
 </script>
 </body>
 </html>
