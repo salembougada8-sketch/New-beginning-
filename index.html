@@ -81,9 +81,16 @@ button{
 .gallery{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
+  gap:16px 12px;
   width:100%;
   max-width:650px;
+}
+
+.photo-item{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .gallery img{
@@ -93,6 +100,19 @@ button{
   object-fit:cover;
   border-radius:15px;
   background:#f1dce8;
+}
+
+.photo-caption{
+  width:100%;
+  margin:9px 0 0;
+  padding:10px 6px;
+  border-radius:12px;
+  background:#fce4ec;
+  color:#a13f70;
+  font-size:14px;
+  line-height:1.6;
+  font-weight:bold;
+  text-align:center;
 }
 
 .message,.letter{
@@ -162,8 +182,19 @@ video{
     <h2>Memories of Us ♡</h2>
 
     <div class="gallery">
-      <img src="./photo1.jpg" alt="Our memory 1">
-      <img src="./photo2.jpg" alt="Our memory 2">
+      <div class="photo-item">
+        <img src="./photo1.jpg" alt="Our memory 1">
+        <p class="photo-caption">
+          ❤️ My beautiful angel, my everything.
+        </p>
+      </div>
+
+      <div class="photo-item">
+        <img src="./photo2.jpg" alt="Our memory 2">
+        <p class="photo-caption">
+          🐱 My doctor, the cutest kitty in the world.
+        </p>
+      </div>
     </div>
 
     <div class="message">
@@ -208,8 +239,12 @@ video{
       تعذّر تحميل الفيديو. تحقق من الملف وحاول مرة أخرى.
     </p>
 
-    <p>Some memories deserve to be kept close to our hearts. ♡ 
-    فما حجات تعدينا بيهم سواء كانو خايبين و لا باهين اما كي نتفكر الي اني عديتهم معاك انت نفرح و برسمي منجمش نتخيل انو حكايتنا توفا على حكايات فارغة </p>
+    <p>
+      Some memories deserve to be kept close to our hearts. ♡
+      فما حجات تعدينا بيهم سواء كانو خايبين و لا باهين
+      اما كي نتفكر الي اني عديتهم معاك انت نفرح
+      و برسمي منجمش نتخيل انو حكايتنا توفا على حكايات فارغة
+    </p>
 
     <button onclick="go(3)">CONTINUE ♡</button>
   </div>
@@ -264,10 +299,33 @@ video{
     <h2>Our Story Isn't Over ♡</h2>
 
     <div class="gallery">
-      <img src="./photo3.jpg" alt="Our memory 3">
-      <img src="./photo4.jpg" alt="Our memory 4">
-      <img src="./photo5.jpg" alt="Our memory 5">
-      <img src="./photo6.jpg" alt="Our memory 6">
+      <div class="photo-item">
+        <img src="./photo3.jpg" alt="Our memory 3">
+        <p class="photo-caption">
+          🌸 My beautiful dream come true.
+        </p>
+      </div>
+
+      <div class="photo-item">
+        <img src="./photo4.jpg" alt="Our memory 4">
+        <p class="photo-caption">
+          🏡 My protector, my safe home.
+        </p>
+      </div>
+
+      <div class="photo-item">
+        <img src="./photo5.jpg" alt="Our memory 5">
+        <p class="photo-caption">
+          😊 Your happy smile lights up my world.
+        </p>
+      </div>
+
+      <div class="photo-item">
+        <img src="./photo6.jpg" alt="Our memory 6">
+        <p class="photo-caption">
+          ♾️ I’ll love you forever.
+        </p>
+      </div>
     </div>
 
     <div class="heart">♡</div>
