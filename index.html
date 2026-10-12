@@ -1,327 +1,340 @@
 
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A New Beginning ♡</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Message From My Heart ♡</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:#f8e8ee;
-  font-family:Georgia,"Times New Roman",serif;
-  color:white;
+* {
+  box-sizing: border-box;
 }
 
-.page{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:15px;
+:root {
+  --pink: #f7d9e8;
+  --dark-pink: #b34d7a;
+  --purple: #79547d;
+  --white: #fffafc;
 }
 
-.book{
-  position:relative;
-  width:100%;
-  max-width:440px;
-  min-height:760px;
-  background:#8d607a;
-  border:7px solid #f4e0d5;
-  padding:75px 25px 45px;
-  text-align:center;
-  overflow:hidden;
-  box-shadow:0 15px 55px #59314930;
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  background: linear-gradient(135deg, #fce4ec, #eadcf8, #f9e5ee);
+  color: #57384e;
+  text-align: center;
 }
 
-.book:before,.book:after{
-  content:"✿ ❀ ✧ ❀ ✿";
-  position:absolute;
-  left:0;
-  right:0;
-  background:#b58ba2;
-  color:#ffe8bd;
-  padding:9px;
-  letter-spacing:6px;
-  pointer-events:none;
-  z-index:2;
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 35px 18px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: fadeIn .6s ease;
 }
 
-.book:before{top:0}
-.book:after{bottom:0}
-
-.small{
-  font-size:12px;
-  color:#ffe8d5;
-  letter-spacing:1px;
+.page.active {
+  display: flex;
 }
 
-section{
-  display:none;
-  min-height:640px;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:18px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-section.active{display:flex}
-
-h1{
-  font-size:clamp(34px,9vw,46px);
-  font-style:italic;
-  color:#fff0dd;
-  font-weight:normal;
-  margin:8px 0;
+.card {
+  width: 100%;
+  max-width: 650px;
+  padding: 28px 20px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 25px;
+  background: rgba(255,250,252,.82);
+  box-shadow: 0 12px 35px rgba(120,65,100,.15);
 }
 
-h2{
-  font-size:24px;
-  color:#ffebd3;
-  font-weight:normal;
+h1 {
+  font-size: clamp(29px, 7vw, 45px);
+  color: var(--dark-pink);
+  margin: 12px 0 18px;
 }
 
-p{line-height:1.8}
-
-button{
-  border:0;
-  border-radius:25px;
-  background:#4d2d43;
-  color:white;
-  padding:13px 20px;
-  cursor:pointer;
+h2 {
+  color: var(--dark-pink);
+  font-size: clamp(25px, 6vw, 35px);
+  margin: 8px 0 22px;
 }
 
-button:hover{background:#382033}
-
-.gallery{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  width:100%;
+p {
+  line-height: 1.8;
+  font-size: 17px;
 }
 
-.photo{
-  background:#fff8ef;
-  padding:8px;
-  box-shadow:0 4px 12px #39203130;
-  transform:rotate(-3deg);
+.arabic {
+  direction: rtl;
+  font-family: Arial, sans-serif;
+  line-height: 2;
 }
 
-.photo:nth-child(even){transform:rotate(3deg)}
-
-.photo img{
-  display:block;
-  width:100%;
-  height:145px;
-  object-fit:cover;
-  background:#e6cbd9;
+.envelope {
+  font-size: 76px;
+  margin: 12px 0;
+  animation: heartbeat 1.5s infinite;
 }
 
-.letter{
-  background:#fff0d8;
-  color:#6b4356;
-  padding:20px 18px;
-  line-height:1.8;
-  border:2px solid #e7c99d;
-  width:100%;
-  font-size:14px;
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
 }
 
-.letter p{
-  color:#6b4356;
-  margin:0;
-  overflow-wrap:anywhere;
+button {
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 24px;
+  margin: 18px 5px 5px;
+  background: linear-gradient(135deg, #c85d91, #9364a9);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(150,70,120,.2);
 }
 
-video{
-  display:block;
-  width:100%;
-  max-height:300px;
-  background:#241821;
-  border-radius:10px;
+button:active {
+  transform: scale(.97);
 }
 
-.video-error{
-  display:none;
-  color:#ffe8d5;
-  font-size:13px;
-  overflow-wrap:anywhere;
+.gallery {
+  width: 100%;
+  max-width: 650px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.heart{
-  font-size:50px;
-  color:#ffd5e5;
-  animation:heartbeat 1.5s infinite;
+.gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #f1dce8;
+  box-shadow: 0 5px 15px rgba(100,50,80,.13);
 }
 
-@keyframes heartbeat{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.12)}
+.message {
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto 0;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.6);
 }
 
-@media(max-width:380px){
-  .book{padding-left:17px;padding-right:17px}
-  .letter{padding:15px 12px;font-size:13px}
-  .photo img{height:120px}
+.video-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+video {
+  display: block;
+  width: 100%;
+  max-height: 72vh;
+  height: auto;
+  border-radius: 16px;
+  background: #000;
+  object-fit: contain;
+}
+
+.letter {
+  max-width: 650px;
+  padding: 28px 22px;
+  background: rgba(255,255,255,.72);
+  border-radius: 20px;
+  text-align: left;
+  line-height: 1.9;
+  box-shadow: 0 8px 25px rgba(100,50,80,.1);
+}
+
+.letter .arabic {
+  text-align: right;
+}
+
+.heart {
+  font-size: 45px;
+  color: #cf5589;
+  animation: heartbeat 1.4s infinite;
+  margin: 12px;
+}
+
+.small {
+  font-size: 13px;
+  opacity: .75;
+}
+
+@media (max-width: 360px) {
+  .page { padding: 22px 12px; }
+  .card { padding: 22px 14px; }
+  button { padding: 13px 17px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="page">
-<div class="book">
-
-<!-- HIDDEN MUSIC: NO PLAY BUTTON -->
+<!-- Music: browsers may require one touch before audible playback -->
 <audio id="audio" autoplay loop preload="auto">
   <source src="./baby.mp3" type="audio/mpeg">
 </audio>
 
-<!-- PAGE 1 -->
-<section class="active" id="s0">
-  <div class="small">A MESSAGE FROM MY HEART</div>
-  <div style="font-size:90px">💌</div>
+<!-- PAGE 1: INTRO -->
+<section class="page active" id="s0">
+  <div class="card">
+    <div class="envelope">💌</div>
+    <p class="small">A LITTLE MESSAGE FROM MY HEART</p>
+    <h1>A Message<br>From My Heart</h1>
 
-  <h1>It's important that we remember our love</h1>
+    <p class="arabic">
+      دعنا ننسى ما مضى ونبدأ من جديد...<br>
+      فبعض الأشخاص يستحقون فرصة أخرى.
+    </p>
 
-  <p>دعنا ننسى ما مضى ونبدأ من جديد...</p>
+    <p>There are things I want you to know.</p>
 
-  <button onclick="go(1)">OPEN MY HEART ♡</button>
+    <button onclick="go(1)">OPEN MY HEART ♡</button>
+  </div>
 </section>
 
-<!-- PAGE 2: TWO PHOTOS -->
-<section id="s1">
-  <div class="small">TO SOMEONE VERY SPECIAL</div>
-  <h1>Let's Start Again</h1>
-  <h2>OUR STORY DESERVES A NEW BEGINNING ♡</h2>
+<!-- PAGE 2: FIRST TWO PHOTOS -->
+<section class="page" id="s1">
+  <div class="card">
+    <h2>Memories of Us ♡</h2>
 
-  <div class="gallery">
-    <div class="photo">
-      <img src="./photo1.jpg" alt="Our first memory">
+    <div class="gallery">
+      <img src="./photo1.jpg" alt="Our memory 1">
+      <img src="./photo2.jpg" alt="Our memory 2">
     </div>
-    <div class="photo">
-      <img src="./photo2.jpg" alt="A beautiful memory">
+
+    <div class="message">
+      <p>
+        I know things haven't always been perfect.
+        But the memories we share still mean so much to me.
+        I'm sorry for the moments when I hurt you.
+      </p>
+
+      <p class="arabic">
+        سامحني على كل لحظة حزينة تسببت فيها لك.
+        لم تكن نيتي أن أجرحك، وأتمنى أن نمنح أنفسنا فرصة جديدة.
+      </p>
     </div>
+
+    <button onclick="go(2)">WATCH OUR VIDEO ♡</button>
   </div>
-
-  <p>Some things are worth understanding,
-  forgiving, and trying again for.</p>
-
-  <button onclick="go(2)">WATCH OUR VIDEO ♡</button>
 </section>
 
 <!-- PAGE 3: VIDEO -->
-<section id="s2">
-  <div class="small">A MEMORY TO KEEP</div>
-  <h2>OUR LITTLE VIDEO ♡</h2>
+<section class="page" id="s2">
+  <div class="card">
+    <h2>A Memory Just for Us 🎬</h2>
 
-  <video id="video" controls playsinline preload="metadata">
-    <source src="./video.mp4" type="video/mp4">
-    Your browser does not support this video.
-  </video>
+    <div class="video-container">
+      <video
+        id="video"
+        controls
+        playsinline
+        webkit-playsinline
+        preload="auto"
+      >
+        <source src="./video.mp4" type="video/mp4">
+        Your browser does not support this video.
+      </video>
+    </div>
 
-  <p id="videoError" class="video-error">
-    The video could not be loaded. Check the file name and format.
-  </p>
-
-  <p>Every moment we shared means something to me. ♡</p>
-
-  <button onclick="go(3)">READ MY LETTER ♡</button>
-</section>
-
-<!-- PAGE 4: LOVE LETTER -->
-<section id="s3">
-  <div class="small">A LETTER FROM MY HEART</div>
-
-  <div class="letter">
-    <h2 style="color:#80556d;margin-top:0">
-      I'm Sorry, My Love ♡
-    </h2>
+    <p id="videoError" class="arabic"
+       style="display:none;color:#b00040;">
+      تعذّر تحميل الفيديو. تأكد من اسم الملف وصيغته وأنه موجود بجانب index.html في GitHub.
+    </p>
 
     <p>
-      I know that things haven't been perfect between us,
-      and I know that some of my words or actions may have
-      hurt you. For that, I'm truly sorry. You mean so much
-      to me, and the last thing I want is for the mistakes
-      of the past to keep hurting us.
-
-      <br><br>
-
-      I don't want us to remain strangers after everything
-      we've shared. I want us to leave the pain behind,
-      learn from our mistakes, and give our story a new beginning.
-
-      <br><br>
-
-      Let us fix things together, help each other grow,
-      and never give up on understanding one another.
-
-      <br><br>
-
-      دعنا نصلح بعضنا البعض، ولا نفترق أبداً،
-      ونبقى دائماً ممسكين بأيدي بعضنا إلى آخر يوم في حياتنا.
-
-      <br><br>
-
-      I can't promise that every day will be easy,
-      but I hope we can face the difficult days together,
-      with honesty, patience, forgiveness, and love.
-      I want us to choose each other, not only in the happy
-      moments, but also when life gets difficult.
-
-      <br><br>
-
-      So, can we leave the past behind and start again,
-      with hearts that are ready to understand and forgive?
-      Can we keep holding each other's hands and build
-      something beautiful together, one day at a time?
-
-      <br><br>
-
-      <strong>
-        5alina dima mkabchin fi b3athna w in7ibo
-        b3athna il2a5er nhar fi 7yatna.
-        Is that a promise? ♡
-      </strong>
+      Some memories deserve to be kept close to our hearts. ♡
     </p>
-  </div>
 
-  <button onclick="go(4)">OUR MEMORIES ♡</button>
+    <button onclick="go(3)">CONTINUE ♡</button>
+  </div>
 </section>
 
-<!-- PAGE 5: FOUR PHOTOS -->
-<section id="s4">
-  <div class="small">LITTLE MOMENTS, BIG FEELINGS</div>
-  <h2>OUR FAVORITE MEMORIES</h2>
+<!-- PAGE 4: APOLOGY LETTER -->
+<section class="page" id="s3">
+  <div class="card">
+    <h2>From My Heart 💗</h2>
 
-  <div class="gallery">
-    <div class="photo">
-      <img src="./photo3.jpg" alt="Memory three">
+    <div class="letter">
+      <p>My dear,</p>
+
+      <p>
+        I'm truly sorry for the things that hurt you.
+        I know that saying sorry cannot erase everything,
+        but I want you to know that you matter to me.
+      </p>
+
+      <p>
+        I don't expect everything to become perfect overnight.
+        I only hope we can listen to each other, understand each
+        other better, and rebuild the beautiful things between us
+        one step at a time.
+      </p>
+
+      <p class="arabic">
+        نعرف اللي الكلام وحده ما يكفيش، أما نحبك تعرف
+        اللي مكانتك عندي كبيرة، ونحب نصلحوا اللي صار بيناتنا.
+        نحب نسمعك ونفهمك أكثر، ونكون خير من قبل.
+      </p>
+
+      <p>
+        5alina dima mkabchin fi b3athna w in7ibo b3athna
+        il2a5er nhar fi 7yatna.
+      </p>
+
+      <p><strong>Is that a promise? ♡</strong></p>
+
+      <p class="arabic">سامحني، وإن شاء الله تكون بداية جديدة لينا.</p>
+
+      <p>With all my heart, ♡</p>
     </div>
-    <div class="photo">
-      <img src="./photo4.jpg" alt="Memory four">
-    </div>
-    <div class="photo">
-      <img src="./photo5.jpg" alt="Memory five">
-    </div>
-    <div class="photo">
-      <img src="./photo6.jpg" alt="Memory six">
-    </div>
+
+    <button onclick="go(4)">ONE MORE THING ♡</button>
   </div>
-
-  <div class="heart">♡</div>
-
-  <p>One step at a time, one day at a time.</p>
-
-  <button onclick="go(1)">READ AGAIN ♡</button>
 </section>
 
-</div>
-</div>
+<!-- PAGE 5: FOUR MORE PHOTOS -->
+<section class="page" id="s4">
+  <div class="card">
+    <h2>Our Story Isn't Over ♡</h2>
+
+    <div class="gallery">
+      <img src="./photo3.jpg" alt="Our memory 3">
+      <img src="./photo4.jpg" alt="Our memory 4">
+      <img src="./photo5.jpg" alt="Our memory 5">
+      <img src="./photo6.jpg" alt="Our memory 6">
+    </div>
+
+    <div class="heart">♡</div>
+
+    <p>One step at a time, one day at a time.</p>
+
+    <p class="arabic">
+      كل شيء جميل يستحق الصبر والمحاولة.
+      نتمنى نبدأوا صفحة جديدة مع بعضنا.
+    </p>
+
+    <button onclick="go(0)">READ AGAIN ♡</button>
+  </div>
+</section>
 
 <script>
 let current = 0;
@@ -330,46 +343,71 @@ const audio = document.getElementById('audio');
 const video = document.getElementById('video');
 const videoError = document.getElementById('videoError');
 
-function startMusic(){
-  audio.play().catch(()=>{
-    // The browser may require a user gesture.
-    // Retry when the visitor first interacts with the page.
+/* Music autoplay attempt */
+function startMusic() {
+  if (!audio) return;
+
+  audio.play().catch(function () {
+    // Browsers may block audible autoplay until the visitor interacts.
   });
 }
 
-// Try autoplay as soon as possible.
 startMusic();
 
-window.addEventListener('load',startMusic);
+window.addEventListener('load', function () {
+  startMusic();
+});
 
-// If autoplay is blocked, retry after the first touch or click.
-// No music button is displayed.
-document.addEventListener('pointerdown',function(){
-  if(audio.paused){
+/* Retry music after the first visitor interaction */
+document.addEventListener('pointerdown', function () {
+  if (audio && audio.paused) {
     startMusic();
   }
-},{passive:true,once:true});
+}, { once: true, passive: true });
 
-function go(n){
-  document.getElementById('s'+current).classList.remove('active');
-  current=n;
-  document.getElementById('s'+current).classList.add('active');
+/* Page navigation */
+function go(n) {
+  document.getElementById('s' + current).classList.remove('active');
 
-  if(n===2 && video.paused){
-    video.load();
+  current = n;
+
+  document.getElementById('s' + current).classList.add('active');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  /* Load video only when the video page is opened */
+  if (n === 2) {
+    videoError.style.display = 'none';
+
+    if (video.error || video.readyState === 0) {
+      video.load();
+    }
   }
 
-  window.scrollTo({top:0,behavior:'smooth'});
+  /* Retry music when a navigation button is pressed */
+  if (audio && audio.paused) {
+    startMusic();
+  }
 }
 
-video.addEventListener('error',()=>{
-  videoError.style.display='block';
+/* Show a useful error if the video cannot load */
+video.addEventListener('error', function () {
+  videoError.style.display = 'block';
 });
 
-video.addEventListener('loadeddata',()=>{
-  videoError.style.display='none';
+/* Hide the error when video data becomes available */
+video.addEventListener('loadeddata', function () {
+  videoError.style.display = 'none';
 });
 
+/* Keep the error hidden while the video is loading */
+video.addEventListener('loadstart', function () {
+  videoError.style.display = 'none';
+});
 </script>
+
 </body>
 </html>
