@@ -148,7 +148,7 @@ video{
 
     <p class="arabic">
       دعنا ننسى ما مضى ونبدأ من جديد...<br>
-       انا و انت ضد العالم الكل مفما شيء يستحق نخسر بعضنا على خاترو.
+      انا و انت ضد العالم الكل مفما شيء يستحق نخسر بعضنا على خاترو.
     </p>
 
     <p>There are things I want you to know.</p>
@@ -183,7 +183,7 @@ video{
   </div>
 </section>
 
-<!-- PAGE 3: AUTOPLAY MUTED VIDEO -->
+<!-- PAGE 3: AUTOPLAY SILENT VIDEO -->
 <section class="page" id="s2">
   <div class="card">
     <h2>A Memory Just for Us 🎬</h2>
@@ -289,10 +289,10 @@ const audio = document.getElementById('audio');
 const video = document.getElementById('video');
 const videoError = document.getElementById('videoError');
 
-/* Attempt to start background music */
+/* Background music */
 function startMusic(){
   audio.play().catch(function(){
-    // Some mobile browsers require user interaction.
+    // Mobile browsers may require a user interaction.
   });
 }
 
@@ -300,34 +300,45 @@ startMusic();
 
 window.addEventListener('load', startMusic);
 
-/* Retry music after the first touch */
 document.addEventListener('pointerdown', function(){
   if(audio.paused){
     startMusic();
   }
 }, {once:true, passive:true});
 
-/* Navigation between pages */
+/* Keep the video permanently muted */
+function keepVideoMuted(){
+  video.muted = true;
+  video.defaultMuted = true;
+  video.volume = 0;
+}
+
+keepVideoMuted();
+
+video.addEventListener('volumechange', keepVideoMuted);
+
+/* Navigate between pages */
 function go(n){
   document.getElementById('s' + current).classList.remove('active');
 
-  /* Stop the video when leaving its page */
   if(current === 2){
     video.pause();
   }
 
   current = n;
+
   document.getElementById('s' + current).classList.add('active');
 
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
-  /* Automatically play the video silently */
   if(n === 2){
     videoError.style.display = 'none';
 
-    video.muted = true;
+    keepVideoMuted();
     video.currentTime = 0;
-    video.load();
 
     const playPromise = video.play();
 
@@ -338,27 +349,19 @@ function go(n){
     }
   }
 
-  /* Keep the song playing */
   if(audio.paused){
     startMusic();
   }
 }
 
-/* Video loading error */
+/* Video error handling */
 video.addEventListener('error', function(){
   videoError.style.display = 'block';
 });
 
-/* Hide error once video is ready */
 video.addEventListener('loadeddata', function(){
   videoError.style.display = 'none';
-});
-
-/* Enforce muted video even if the player is interacted with */
-video.addEventListener('volumechange', function(){
-  if(!video.muted){
-    video.muted = true;
-  }
+  keepVideoMuted();
 });
 </script>
 
