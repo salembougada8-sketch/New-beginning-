@@ -7,232 +7,151 @@
 <title>A Message From My Heart ♡</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Georgia,"Times New Roman",serif;
+  background:linear-gradient(135deg,#fce4ec,#eadcf8,#f9e5ee);
+  color:#57384e;
+  text-align:center;
 }
-
-:root {
-  --pink: #f7d9e8;
-  --dark-pink: #b34d7a;
-  --purple: #79547d;
-  --white: #fffafc;
+.page{
+  display:none;
+  min-height:100vh;
+  padding:30px 15px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  animation:fade .5s ease;
 }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Georgia, "Times New Roman", serif;
-  background: linear-gradient(135deg, #fce4ec, #eadcf8, #f9e5ee);
-  color: #57384e;
-  text-align: center;
+.page.active{display:flex}
+@keyframes fade{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
 }
-
-.page {
-  display: none;
-  min-height: 100vh;
-  padding: 35px 18px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  animation: fadeIn .6s ease;
+.card{
+  width:100%;
+  max-width:650px;
+  padding:25px 18px;
+  border:1px solid #ffffffaa;
+  border-radius:24px;
+  background:#fffafce8;
+  box-shadow:0 12px 35px #78416420;
 }
-
-.page.active {
-  display: flex;
+h1,h2{color:#b34d7a}
+h1{font-size:clamp(30px,7vw,45px)}
+h2{font-size:clamp(25px,6vw,35px)}
+p{font-size:17px;line-height:1.8}
+.arabic{
+  direction:rtl;
+  font-family:Arial,sans-serif;
+  line-height:2;
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.envelope{
+  font-size:75px;
+  animation:beat 1.5s infinite;
 }
-
-.card {
-  width: 100%;
-  max-width: 650px;
-  padding: 28px 20px;
-  border: 1px solid rgba(255,255,255,.8);
-  border-radius: 25px;
-  background: rgba(255,250,252,.82);
-  box-shadow: 0 12px 35px rgba(120,65,100,.15);
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
 }
-
-h1 {
-  font-size: clamp(29px, 7vw, 45px);
-  color: var(--dark-pink);
-  margin: 12px 0 18px;
+button{
+  border:0;
+  border-radius:30px;
+  padding:14px 22px;
+  margin:18px 4px 5px;
+  background:linear-gradient(135deg,#c85d91,#9364a9);
+  color:white;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
 }
-
-h2 {
-  color: var(--dark-pink);
-  font-size: clamp(25px, 6vw, 35px);
-  margin: 8px 0 22px;
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  width:100%;
+  max-width:650px;
 }
-
-p {
-  line-height: 1.8;
-  font-size: 17px;
+.gallery img{
+  display:block;
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:15px;
+  background:#f1dce8;
 }
-
-.arabic {
-  direction: rtl;
-  font-family: Arial, sans-serif;
-  line-height: 2;
+.message,.letter{
+  width:100%;
+  max-width:650px;
+  margin:20px auto 0;
+  padding:18px;
+  border-radius:18px;
+  background:#ffffffa8;
+  line-height:1.9;
 }
-
-.envelope {
-  font-size: 76px;
-  margin: 12px 0;
-  animation: heartbeat 1.5s infinite;
+.letter{text-align:left}
+.letter .arabic{text-align:right}
+.video-container{width:100%;max-width:700px}
+video{
+  display:block;
+  width:100%;
+  max-height:72vh;
+  height:auto;
+  background:#000;
+  border-radius:16px;
 }
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+.heart{
+  font-size:45px;
+  color:#cf5589;
+  animation:beat 1.4s infinite;
 }
-
-button {
-  border: 0;
-  border-radius: 30px;
-  padding: 14px 24px;
-  margin: 18px 5px 5px;
-  background: linear-gradient(135deg, #c85d91, #9364a9);
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(150,70,120,.2);
-}
-
-button:active {
-  transform: scale(.97);
-}
-
-.gallery {
-  width: 100%;
-  max-width: 650px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.gallery img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: 16px;
-  background: #f1dce8;
-  box-shadow: 0 5px 15px rgba(100,50,80,.13);
-}
-
-.message {
-  width: 100%;
-  max-width: 650px;
-  margin: 20px auto 0;
-  padding: 18px;
-  border-radius: 18px;
-  background: rgba(255,255,255,.6);
-}
-
-.video-container {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-video {
-  display: block;
-  width: 100%;
-  max-height: 72vh;
-  height: auto;
-  border-radius: 16px;
-  background: #000;
-  object-fit: contain;
-}
-
-.letter {
-  max-width: 650px;
-  padding: 28px 22px;
-  background: rgba(255,255,255,.72);
-  border-radius: 20px;
-  text-align: left;
-  line-height: 1.9;
-  box-shadow: 0 8px 25px rgba(100,50,80,.1);
-}
-
-.letter .arabic {
-  text-align: right;
-}
-
-.heart {
-  font-size: 45px;
-  color: #cf5589;
-  animation: heartbeat 1.4s infinite;
-  margin: 12px;
-}
-
-.small {
-  font-size: 13px;
-  opacity: .75;
-}
-
-@media (max-width: 360px) {
-  .page { padding: 22px 12px; }
-  .card { padding: 22px 14px; }
-  button { padding: 13px 17px; }
-}
+.small{font-size:13px;opacity:.75}
 </style>
 </head>
 
 <body>
 
-<!-- Music: browsers may require one touch before audible playback -->
+<!-- MUSIC -->
 <audio id="audio" autoplay loop preload="auto">
-  <source src="./baby.mp3" type="audio/mpeg">
+  <source src="./Justin%20Bieber%20-%20Baby.mp3" type="audio/mpeg">
 </audio>
 
-<!-- PAGE 1: INTRO -->
+<!-- PAGE 1 -->
 <section class="page active" id="s0">
   <div class="card">
     <div class="envelope">💌</div>
     <p class="small">A LITTLE MESSAGE FROM MY HEART</p>
     <h1>A Message<br>From My Heart</h1>
-
     <p class="arabic">
       دعنا ننسى ما مضى ونبدأ من جديد...<br>
       فبعض الأشخاص يستحقون فرصة أخرى.
     </p>
-
     <p>There are things I want you to know.</p>
-
     <button onclick="go(1)">OPEN MY HEART ♡</button>
   </div>
 </section>
 
-<!-- PAGE 2: FIRST TWO PHOTOS -->
+<!-- PAGE 2: PHOTOS 1 AND 2 -->
 <section class="page" id="s1">
   <div class="card">
     <h2>Memories of Us ♡</h2>
-
     <div class="gallery">
       <img src="./photo1.jpg" alt="Our memory 1">
       <img src="./photo2.jpg" alt="Our memory 2">
     </div>
-
     <div class="message">
       <p>
         I know things haven't always been perfect.
         But the memories we share still mean so much to me.
         I'm sorry for the moments when I hurt you.
       </p>
-
       <p class="arabic">
         سامحني على كل لحظة حزينة تسببت فيها لك.
         لم تكن نيتي أن أجرحك، وأتمنى أن نمنح أنفسنا فرصة جديدة.
       </p>
     </div>
-
     <button onclick="go(2)">WATCH OUR VIDEO ♡</button>
   </div>
 </section>
@@ -241,29 +160,17 @@ video {
 <section class="page" id="s2">
   <div class="card">
     <h2>A Memory Just for Us 🎬</h2>
-
     <div class="video-container">
-      <video
-        id="video"
-        controls
-        playsinline
-        webkit-playsinline
-        preload="auto"
-      >
-        <source src="./video.mp4" type="video/mp4">
+      <video id="video" controls playsinline preload="metadata">
+        <source src="./VID_20261003_113548_805.mp4" type="video/mp4">
         Your browser does not support this video.
       </video>
     </div>
-
     <p id="videoError" class="arabic"
-       style="display:none;color:#b00040;">
-      تعذّر تحميل الفيديو. تأكد من اسم الملف وصيغته وأنه موجود بجانب index.html في GitHub.
+       style="display:none;color:#b00040">
+      تعذّر تحميل الفيديو. تحقق من الملف وحاول مرة أخرى.
     </p>
-
-    <p>
-      Some memories deserve to be kept close to our hearts. ♡
-    </p>
-
+    <p>Some memories deserve to be kept close to our hearts. ♡</p>
     <button onclick="go(3)">CONTINUE ♡</button>
   </div>
 </section>
@@ -272,66 +179,52 @@ video {
 <section class="page" id="s3">
   <div class="card">
     <h2>From My Heart 💗</h2>
-
     <div class="letter">
       <p>My dear,</p>
-
       <p>
         I'm truly sorry for the things that hurt you.
         I know that saying sorry cannot erase everything,
         but I want you to know that you matter to me.
       </p>
-
       <p>
         I don't expect everything to become perfect overnight.
         I only hope we can listen to each other, understand each
         other better, and rebuild the beautiful things between us
         one step at a time.
       </p>
-
       <p class="arabic">
         نعرف اللي الكلام وحده ما يكفيش، أما نحبك تعرف
         اللي مكانتك عندي كبيرة، ونحب نصلحوا اللي صار بيناتنا.
         نحب نسمعك ونفهمك أكثر، ونكون خير من قبل.
       </p>
-
       <p>
         5alina dima mkabchin fi b3athna w in7ibo b3athna
         il2a5er nhar fi 7yatna.
       </p>
-
       <p><strong>Is that a promise? ♡</strong></p>
-
       <p class="arabic">سامحني، وإن شاء الله تكون بداية جديدة لينا.</p>
-
       <p>With all my heart, ♡</p>
     </div>
-
     <button onclick="go(4)">ONE MORE THING ♡</button>
   </div>
 </section>
 
-<!-- PAGE 5: FOUR MORE PHOTOS -->
+<!-- PAGE 5: PHOTOS 3 TO 6 -->
 <section class="page" id="s4">
   <div class="card">
     <h2>Our Story Isn't Over ♡</h2>
-
     <div class="gallery">
       <img src="./photo3.jpg" alt="Our memory 3">
       <img src="./photo4.jpg" alt="Our memory 4">
       <img src="./photo5.jpg" alt="Our memory 5">
       <img src="./photo6.jpg" alt="Our memory 6">
     </div>
-
     <div class="heart">♡</div>
-
     <p>One step at a time, one day at a time.</p>
-
     <p class="arabic">
       كل شيء جميل يستحق الصبر والمحاولة.
       نتمنى نبدأوا صفحة جديدة مع بعضنا.
     </p>
-
     <button onclick="go(0)">READ AGAIN ♡</button>
   </div>
 </section>
@@ -343,68 +236,39 @@ const audio = document.getElementById('audio');
 const video = document.getElementById('video');
 const videoError = document.getElementById('videoError');
 
-/* Music autoplay attempt */
-function startMusic() {
-  if (!audio) return;
-
-  audio.play().catch(function () {
-    // Browsers may block audible autoplay until the visitor interacts.
+function startMusic(){
+  audio.play().catch(function(){
+    // The browser may require a user interaction for audible autoplay.
   });
 }
 
 startMusic();
+window.addEventListener('load',startMusic);
 
-window.addEventListener('load', function () {
-  startMusic();
-});
+document.addEventListener('pointerdown',function(){
+  if(audio.paused) startMusic();
+},{once:true,passive:true});
 
-/* Retry music after the first visitor interaction */
-document.addEventListener('pointerdown', function () {
-  if (audio && audio.paused) {
-    startMusic();
-  }
-}, { once: true, passive: true });
-
-/* Page navigation */
-function go(n) {
-  document.getElementById('s' + current).classList.remove('active');
-
+function go(n){
+  document.getElementById('s'+current).classList.remove('active');
   current = n;
+  document.getElementById('s'+current).classList.add('active');
 
-  document.getElementById('s' + current).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
 
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-
-  /* Load video only when the video page is opened */
-  if (n === 2) {
+  if(n === 2){
     videoError.style.display = 'none';
-
-    if (video.error || video.readyState === 0) {
-      video.load();
-    }
+    video.load();
   }
 
-  /* Retry music when a navigation button is pressed */
-  if (audio && audio.paused) {
-    startMusic();
-  }
+  if(audio.paused) startMusic();
 }
 
-/* Show a useful error if the video cannot load */
-video.addEventListener('error', function () {
+video.addEventListener('error',function(){
   videoError.style.display = 'block';
 });
 
-/* Hide the error when video data becomes available */
-video.addEventListener('loadeddata', function () {
-  videoError.style.display = 'none';
-});
-
-/* Keep the error hidden while the video is loading */
-video.addEventListener('loadstart', function () {
+video.addEventListener('loadeddata',function(){
   videoError.style.display = 'none';
 });
 </script>
