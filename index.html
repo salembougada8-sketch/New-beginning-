@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A New Beginning ♡</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#f8e8ee;
+  font-family:Georgia,"Times New Roman",serif;
+  color:white;
+}
+
+.page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+}
+
+.book{
+  position:relative;
+  width:100%;
+  max-width:440px;
+  min-height:760px;
+  background:#8d607a;
+  border:7px solid #f4e0d5;
+  padding:72px 25px 40px;
+  text-align:center;
+  overflow:hidden;
+  box-shadow:0 15px 55px #59314930;
+}
+
+.book:before,.book:after{
+  content:"✿ ❀ ✧ ❀ ✿";
+  position:absolute;
+  left:0;
+  right:0;
+  background:#b58ba2;
+  color:#ffe8bd;
+  padding:9px;
+  letter-spacing:6px;
+  pointer-events:none;
+}
+
+.book:before{top:0}
+.book:after{bottom:0}
+
+#music{
+  position:absolute;
+  top:42px;
+  left:8px;
+  right:8px;
+  z-index:3;
+}
+
+#music button{
+  padding:9px 12px;
+  margin:2px;
+  font-size:12px;
+}
+
+.small{
+  font-size:12px;
+  color:#ffe8d5;
+  letter-spacing:1px;
+}
+
+section{
+  display:none;
+  min-height:640px;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+}
+
+section.active{display:flex}
+
+h1{
+  font-size:clamp(34px,9vw,46px);
+  font-style:italic;
+  color:#fff0dd;
+  font-weight:normal;
+  margin:8px 0;
+}
+
+h2{
+  font-size:24px;
+  color:#ffebd3;
+  font-weight:normal;
+}
+
+p{line-height:1.8}
+
+button{
+  border:0;
+  border-radius:25px;
+  background:#4d2d43;
+  color:white;
+  padding:13px 20px;
+  cursor:pointer;
+  transition:background .2s,transform .2s;
+}
+
+button:hover{
+  background:#382033;
+  transform:scale(1.03);
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  width:100%;
+}
+
+.photo{
+  background:#fff8ef;
+  color:#8d607a;
+  padding:8px 8px 15px;
+  box-shadow:0 4px 12px #39203130;
+  transform:rotate(-3deg);
+  transition:transform .25s;
+}
+
+.photo:nth-child(even){transform:rotate(3deg)}
+
+.photo:hover{
+  transform:rotate(0deg) scale(1.03);
+}
+
+.photo img{
+  display:block;
+  width:100%;
+  height:125px;
+  object-fit:cover;
+  background:#e6cbd9;
+}
+
+.caption{
+  display:block;
+  padding-top:10px;
+  font-size:12px;
+}
+
+.letter{
+  background:#fff0d8;
+  color:#6b4356;
+  padding:20px 18px;
+  line-height:1.8;
+  border:2px solid #e7c99d;
+  box-shadow:0 5px 15px #4b2c3b30;
+  width:100%;
+  font-size:14px;
+}
+
+.letter p{
+  color:#6b4356;
+  margin:0;
+  overflow-wrap:anywhere;
+}
+
+video{
+  width:100%;
+  max-height:220px;
+  background:#241821;
+  border-radius:10px;
+}
+
+.heart{
+  font-size:50px;
+  color:#ffd5e5;
+  animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+}
+
+@media(max-width:380px){
+  .book{padding-left:17px;padding-right:17px}
+  .letter{padding:15px 12px;font-size:13px}
+  .photo img{height:105px}
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+<div class="book">
+
+<!-- MUSIC PLAYER -->
+<div id="music">
+  <button onclick="toggleMusic()" id="musicBtn">
+    PLAY MUSIC ♫
+  </button>
+
+  <audio id="audio" loop preload="metadata">
+    <source src="baby.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="small" id="musicStatus">
+    Baby ♡ Justin Bieber
+  </div>
+</div>
+
+<!-- PAGE 1 -->
+<section class="active" id="s0">
+  <div class="small">A MESSAGE FROM MY HEART</div>
+
+  <div style="font-size:90px">💌</div>
+
+  <h1>It's important that we remember our love</h1>
+
+  <p>دعنا ننسى ما مضى ونبدأ من جديد...</p>
+
+  <button onclick="go(1)">OPEN MY HEART ♡</button>
+</section>
+
+<!-- PAGE 2: FIRST TWO PHOTOS -->
+<section id="s1">
+  <div class="small">TO SOMEONE VERY SPECIAL</div>
+
+  <h1>Let's Start Again</h1>
+
+  <h2>OUR STORY DESERVES A NEW BEGINNING ♡</h2>
+
+  <div class="gallery">
+    <div class="photo">
+      <img src="photo1.jpg" alt="Our first memory">
+      <span class="caption">Our special moment ♡</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo2.jpg" alt="A beautiful memory">
+      <span class="caption">You and me ♡</span>
+    </div>
+  </div>
+
+  <p>
+    Some things are worth understanding,
+    forgiving, and trying again for.
+  </p>
+
+  <button onclick="go(2)">A MEMORY TO KEEP ♡</button>
+</section>
+
+<!-- PAGE 3: VIDEO -->
+<section id="s2">
+  <div class="small">A MEMORY TO KEEP</div>
+
+  <h2>OUR LITTLE VIDEO</h2>
+
+  <video controls id="video" playsinline></video>
+
+  <label class="small">
+    Choose a video from your device
+    <input type="file" accept="video/*" onchange="pickVideo(this)">
+  </label>
+
+  <p>Every moment we shared means something to me. ♡</p>
+
+  <button onclick="go(3)">READ MY LETTER ♡</button>
+</section>
+
+<!-- PAGE 4: LOVE LETTER -->
+<section id="s3">
+  <div class="small">A LETTER FROM MY HEART</div>
+
+  <div class="letter">
+    <h2 style="color:#80556d;margin-top:0">
+      I'm Sorry, My Love ♡
+    </h2>
+
+    <p>
+      I know that things haven't been perfect between us,
+      and I know that some of my words or actions may have
+      hurt you. For that, I'm truly sorry. You mean so much
+      to me, and the last thing I want is for the mistakes
+      of the past to keep hurting us.
+
+      <br><br>
+
+      I don't want us to remain strangers after everything
+      we've shared. I want us to leave the pain behind,
+      learn from our mistakes, and give our story a new beginning.
+
+      <br><br>
+
+      Let us fix things together, help each other grow,
+      and never give up on understanding one another.
+
+      <br><br>
+
+      دعنا نصلح بعضنا البعض، ولا نفترق أبداً،
+      ونبقى دائماً ممسكين بأيدي بعضنا إلى آخر يوم في حياتنا.
+
+      <br><br>
+
+      I can't promise that every day will be easy,
+      but I hope we can face the difficult days together,
+      with honesty, patience, forgiveness, and love.
+      I want us to choose each other, not only in the happy
+      moments, but also when life gets difficult.
+
+      <br><br>
+
+      So, can we leave the past behind and start again,
+      with hearts that are ready to understand and forgive?
+      Can we keep holding each other's hands and build
+      something beautiful together, one day at a time?
+
+      <br><br>
+
+      <strong>
+        5alina dima mkabchin fi b3athna w in7ibo
+        b3athna il2a5er nhar fi 7yatna.
+        Is that a promise? ♡
+      </strong>
+    </p>
+  </div>
+
+  <button onclick="go(4)">OUR MEMORIES ♡</button>
+</section>
+
+<!-- PAGE 5: SIX MORE PHOTOS -->
+<section id="s4">
+  <div class="small">LITTLE MOMENTS, BIG FEELINGS</div>
+
+  <h2>OUR FAVORITE MEMORIES</h2>
+
+  <div class="gallery">
+    <div class="photo">
+      <img src="photo3.jpg" alt="Memory three">
+      <span class="caption">A moment to remember ♡</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo4.jpg" alt="Memory four">
+      <span class="caption">My favorite person ♡</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo5.jpg" alt="Memory five">
+      <span class="caption">Together ♡</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo6.jpg" alt="Memory six">
+      <span class="caption">Beautiful memories ♡</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo7.jpg" alt="Memory seven">
+      <span class="caption">You make me smile ♡</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo8.jpg" alt="Memory eight">
+      <span class="caption">Always in my heart ♡</span>
+    </div>
+  </div>
+
+  <div class="heart">♡</div>
+
+  <p>One step at a time, one day at a time.</p>
+
+  <button onclick="go(1)">READ AGAIN ♡</button>
+</section>
+
+</div>
+</div>
+
+<script>
+let current = 0;
+
+function go(n){
+  document.getElementById('s'+current).classList.remove('active');
+  current = n;
+  document.getElementById('s'+current).classList.add('active');
+
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const audio = document.getElementById('audio');
+const musicBtn = document.getElementById('musicBtn');
+const musicStatus = document.getElementById('musicStatus');
+
+function toggleMusic(){
+  if(audio.paused){
+    audio.play().then(()=>{
+      musicBtn.textContent = 'PAUSE MUSIC ♫';
+      musicStatus.textContent = 'Now playing: Baby ♡ Justin Bieber';
+    }).catch(()=>{
+      musicStatus.textContent =
+        'Could not play the song. Check baby.mp3';
+    });
+  }else{
+    audio.pause();
+    musicBtn.textContent = 'PLAY MUSIC ♫';
+    musicStatus.textContent = 'Music paused ♡';
+  }
+}
+
+audio.addEventListener('ended',()=>{
+  musicBtn.textContent = 'PLAY MUSIC ♫';
+});
+
+audio.addEventListener('error',()=>{
+  musicStatus.textContent =
+    'Song unavailable. Upload baby.mp3 to GitHub.';
+});
+
+function pickVideo(input){
+  const file = input.files && input.files[0];
+  if(!file) return;
+
+  const video = document.getElementById('video');
+
+  if(video.dataset.objectUrl){
+    URL.revokeObjectURL(video.dataset.objectUrl);
+  }
+
+  const url = URL.createObjectURL(file);
+  video.dataset.objectUrl = url;
+  video.src = url;
+  video.load();
+}
+</script>
+</body>
+</html>
