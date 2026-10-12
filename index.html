@@ -3,7 +3,7 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A New Beginning ♡</title>
 
 <style>
@@ -31,7 +31,7 @@ body{
   min-height:760px;
   background:#8d607a;
   border:7px solid #f4e0d5;
-  padding:100px 25px 45px;
+  padding:75px 25px 45px;
   text-align:center;
   overflow:hidden;
   box-shadow:0 15px 55px #59314930;
@@ -52,20 +52,6 @@ body{
 
 .book:before{top:0}
 .book:after{bottom:0}
-
-#music{
-  position:absolute;
-  top:42px;
-  left:8px;
-  right:8px;
-  z-index:3;
-}
-
-#music button{
-  padding:9px 12px;
-  margin:2px;
-  font-size:12px;
-}
 
 .small{
   font-size:12px;
@@ -107,13 +93,9 @@ button{
   color:white;
   padding:13px 20px;
   cursor:pointer;
-  transition:background .2s,transform .2s;
 }
 
-button:hover{
-  background:#382033;
-  transform:scale(1.03);
-}
+button:hover{background:#382033}
 
 .gallery{
   display:grid;
@@ -127,14 +109,9 @@ button:hover{
   padding:8px;
   box-shadow:0 4px 12px #39203130;
   transform:rotate(-3deg);
-  transition:transform .25s;
 }
 
 .photo:nth-child(even){transform:rotate(3deg)}
-
-.photo:hover{
-  transform:rotate(0deg) scale(1.03);
-}
 
 .photo img{
   display:block;
@@ -150,7 +127,6 @@ button:hover{
   padding:20px 18px;
   line-height:1.8;
   border:2px solid #e7c99d;
-  box-shadow:0 5px 15px #4b2c3b30;
   width:100%;
   font-size:14px;
 }
@@ -162,10 +138,18 @@ button:hover{
 }
 
 video{
+  display:block;
   width:100%;
   max-height:300px;
   background:#241821;
   border-radius:10px;
+}
+
+.video-error{
+  display:none;
+  color:#ffe8d5;
+  font-size:13px;
+  overflow-wrap:anywhere;
 }
 
 .heart{
@@ -188,23 +172,14 @@ video{
 </head>
 
 <body>
+
 <div class="page">
 <div class="book">
 
-<!-- MUSIC -->
-<div id="music">
-  <button onclick="toggleMusic()" id="musicBtn">
-    PLAY MUSIC ♫
-  </button>
-
-  <audio id="audio" autoplay loop preload="auto">
-    <source src="./baby.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="small" id="musicStatus">
-    Baby ♡ Justin Bieber
-  </div>
-</div>
+<!-- HIDDEN MUSIC: NO PLAY BUTTON -->
+<audio id="audio" autoplay loop preload="auto">
+  <source src="./baby.mp3" type="audio/mpeg">
+</audio>
 
 <!-- PAGE 1 -->
 <section class="active" id="s0">
@@ -215,9 +190,7 @@ video{
 
   <p>دعنا ننسى ما مضى ونبدأ من جديد...</p>
 
-  <button onclick="startMusic();go(1)">
-    OPEN MY HEART ♡
-  </button>
+  <button onclick="go(1)">OPEN MY HEART ♡</button>
 </section>
 
 <!-- PAGE 2: TWO PHOTOS -->
@@ -235,10 +208,8 @@ video{
     </div>
   </div>
 
-  <p>
-    Some things are worth understanding,
-    forgiving, and trying again for.
-  </p>
+  <p>Some things are worth understanding,
+  forgiving, and trying again for.</p>
 
   <button onclick="go(2)">WATCH OUR VIDEO ♡</button>
 </section>
@@ -248,17 +219,21 @@ video{
   <div class="small">A MEMORY TO KEEP</div>
   <h2>OUR LITTLE VIDEO ♡</h2>
 
-  <video controls playsinline preload="metadata">
+  <video id="video" controls playsinline preload="metadata">
     <source src="./video.mp4" type="video/mp4">
     Your browser does not support this video.
   </video>
+
+  <p id="videoError" class="video-error">
+    The video could not be loaded. Check the file name and format.
+  </p>
 
   <p>Every moment we shared means something to me. ♡</p>
 
   <button onclick="go(3)">READ MY LETTER ♡</button>
 </section>
 
-<!-- PAGE 4: LETTER -->
+<!-- PAGE 4: LOVE LETTER -->
 <section id="s3">
   <div class="small">A LETTER FROM MY HEART</div>
 
@@ -351,43 +326,50 @@ video{
 <script>
 let current = 0;
 
-function go(n){
-  document.getElementById('s'+current).classList.remove('active');
-  current = n;
-  document.getElementById('s'+current).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
 const audio = document.getElementById('audio');
-const musicBtn = document.getElementById('musicBtn');
-const musicStatus = document.getElementById('musicStatus');
+const video = document.getElementById('video');
+const videoError = document.getElementById('videoError');
 
 function startMusic(){
-  audio.play().then(()=>{
-    musicBtn.textContent='PAUSE MUSIC ♫';
-    musicStatus.textContent='Now playing: Baby ♡ Justin Bieber';
-  }).catch(()=>{
-    musicStatus.textContent='Tap PLAY MUSIC ♫ to start';
+  audio.play().catch(()=>{
+    // The browser may require a user gesture.
+    // Retry when the visitor first interacts with the page.
   });
 }
 
-function toggleMusic(){
+// Try autoplay as soon as possible.
+startMusic();
+
+window.addEventListener('load',startMusic);
+
+// If autoplay is blocked, retry after the first touch or click.
+// No music button is displayed.
+document.addEventListener('pointerdown',function(){
   if(audio.paused){
     startMusic();
-  }else{
-    audio.pause();
-    musicBtn.textContent='PLAY MUSIC ♫';
-    musicStatus.textContent='Music paused ♡';
   }
+},{passive:true,once:true});
+
+function go(n){
+  document.getElementById('s'+current).classList.remove('active');
+  current=n;
+  document.getElementById('s'+current).classList.add('active');
+
+  if(n===2 && video.paused){
+    video.load();
+  }
+
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-window.addEventListener('load',()=>{
-  startMusic();
+video.addEventListener('error',()=>{
+  videoError.style.display='block';
 });
 
-audio.addEventListener('error',()=>{
-  musicStatus.textContent='Song unavailable. Check baby.mp3';
+video.addEventListener('loadeddata',()=>{
+  videoError.style.display='none';
 });
+
 </script>
 </body>
 </html>
