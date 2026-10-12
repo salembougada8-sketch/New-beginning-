@@ -1,4 +1,4 @@
-  
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -31,7 +31,7 @@ body{
   min-height:760px;
   background:#8d607a;
   border:7px solid #f4e0d5;
-  padding:72px 25px 40px;
+  padding:100px 25px 45px;
   text-align:center;
   overflow:hidden;
   box-shadow:0 15px 55px #59314930;
@@ -47,6 +47,7 @@ body{
   padding:9px;
   letter-spacing:6px;
   pointer-events:none;
+  z-index:2;
 }
 
 .book:before{top:0}
@@ -190,14 +191,14 @@ video{
 <div class="page">
 <div class="book">
 
-<!-- MUSIC PLAYER -->
+<!-- MUSIC -->
 <div id="music">
   <button onclick="toggleMusic()" id="musicBtn">
     PLAY MUSIC ♫
   </button>
 
-  <audio id="audio" loop preload="metadata">
-    <source src="baby.mp3" type="audio/mpeg">
+  <audio id="audio" autoplay loop preload="auto">
+    <source src="./baby.mp3" type="audio/mpeg">
   </audio>
 
   <div class="small" id="musicStatus">
@@ -208,31 +209,29 @@ video{
 <!-- PAGE 1 -->
 <section class="active" id="s0">
   <div class="small">A MESSAGE FROM MY HEART</div>
-
   <div style="font-size:90px">💌</div>
 
   <h1>It's important that we remember our love</h1>
 
   <p>دعنا ننسى ما مضى ونبدأ من جديد...</p>
 
-  <button onclick="go(1)">OPEN MY HEART ♡</button>
+  <button onclick="startMusic();go(1)">
+    OPEN MY HEART ♡
+  </button>
 </section>
 
 <!-- PAGE 2: TWO PHOTOS -->
 <section id="s1">
   <div class="small">TO SOMEONE VERY SPECIAL</div>
-
   <h1>Let's Start Again</h1>
-
   <h2>OUR STORY DESERVES A NEW BEGINNING ♡</h2>
 
   <div class="gallery">
     <div class="photo">
-      <img src="photo1.jpg" alt="Our first memory">
+      <img src="./photo1.jpg" alt="Our first memory">
     </div>
-
     <div class="photo">
-      <img src="photo2.jpg" alt="A beautiful memory">
+      <img src="./photo2.jpg" alt="A beautiful memory">
     </div>
   </div>
 
@@ -247,12 +246,11 @@ video{
 <!-- PAGE 3: VIDEO -->
 <section id="s2">
   <div class="small">A MEMORY TO KEEP</div>
-
   <h2>OUR LITTLE VIDEO ♡</h2>
 
   <video controls playsinline preload="metadata">
-    <source src="video.mp4" type="video/mp4">
-    متصفحك لا يدعم تشغيل الفيديو.
+    <source src="./video.mp4" type="video/mp4">
+    Your browser does not support this video.
   </video>
 
   <p>Every moment we shared means something to me. ♡</p>
@@ -260,7 +258,7 @@ video{
   <button onclick="go(3)">READ MY LETTER ♡</button>
 </section>
 
-<!-- PAGE 4: LOVE LETTER -->
+<!-- PAGE 4: LETTER -->
 <section id="s3">
   <div class="small">A LETTER FROM MY HEART</div>
 
@@ -323,24 +321,20 @@ video{
 <!-- PAGE 5: FOUR PHOTOS -->
 <section id="s4">
   <div class="small">LITTLE MOMENTS, BIG FEELINGS</div>
-
   <h2>OUR FAVORITE MEMORIES</h2>
 
   <div class="gallery">
     <div class="photo">
-      <img src="photo3.jpg" alt="Memory three">
+      <img src="./photo3.jpg" alt="Memory three">
     </div>
-
     <div class="photo">
-      <img src="photo4.jpg" alt="Memory four">
+      <img src="./photo4.jpg" alt="Memory four">
     </div>
-
     <div class="photo">
-      <img src="photo5.jpg" alt="Memory five">
+      <img src="./photo5.jpg" alt="Memory five">
     </div>
-
     <div class="photo">
-      <img src="photo6.jpg" alt="Memory six">
+      <img src="./photo6.jpg" alt="Memory six">
     </div>
   </div>
 
@@ -361,7 +355,6 @@ function go(n){
   document.getElementById('s'+current).classList.remove('active');
   current = n;
   document.getElementById('s'+current).classList.add('active');
-
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -369,29 +362,31 @@ const audio = document.getElementById('audio');
 const musicBtn = document.getElementById('musicBtn');
 const musicStatus = document.getElementById('musicStatus');
 
+function startMusic(){
+  audio.play().then(()=>{
+    musicBtn.textContent='PAUSE MUSIC ♫';
+    musicStatus.textContent='Now playing: Baby ♡ Justin Bieber';
+  }).catch(()=>{
+    musicStatus.textContent='Tap PLAY MUSIC ♫ to start';
+  });
+}
+
 function toggleMusic(){
   if(audio.paused){
-    audio.play().then(()=>{
-      musicBtn.textContent = 'PAUSE MUSIC ♫';
-      musicStatus.textContent = 'Now playing: Baby ♡ Justin Bieber';
-    }).catch(()=>{
-      musicStatus.textContent =
-        'Could not play the song. Check baby.mp3';
-    });
+    startMusic();
   }else{
     audio.pause();
-    musicBtn.textContent = 'PLAY MUSIC ♫';
-    musicStatus.textContent = 'Music paused ♡';
+    musicBtn.textContent='PLAY MUSIC ♫';
+    musicStatus.textContent='Music paused ♡';
   }
 }
 
-audio.addEventListener('ended',()=>{
-  musicBtn.textContent = 'PLAY MUSIC ♫';
+window.addEventListener('load',()=>{
+  startMusic();
 });
 
 audio.addEventListener('error',()=>{
-  musicStatus.textContent =
-    'Song unavailable. Upload baby.mp3 to GitHub.';
+  musicStatus.textContent='Song unavailable. Check baby.mp3';
 });
 </script>
 </body>
